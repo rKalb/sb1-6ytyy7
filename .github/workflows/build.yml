@@ -19,6 +19,27 @@ jobs:
         with:
           node-version: 10
 
+      - name: Set Environment Variables
+        env: 
+          # AWS Configuration
+          VITE_AWS_REGION: ${{ secrets.VITE_AWS_REGION }}
+          VITE_AWS_ACCESS_KEY_ID: ${{ secrets.VITE_AWS_ACCESS_KEY_ID }}
+          VITE_AWS_SECRET_ACCESS_KEY: ${{ secrets.VITE_AWS_SECRET_ACCESS_KEY }}
+          VITE_DYNAMODB_TABLE_NAME: ${{ secrets.VITE_DYNAMODB_TABLE_NAME }}
+          # Setting DEBUG Variables
+          VITE_USE_DYNAMODB: ${{ vars.VITE_USE_DYNAMODB }}
+          VITE_DEBUG_MODE: ${{ vars.VITE_DEBUG_MODE }}
+          VITE_LOCAL_STORAGE_PREFIX: ${{ vars.VITE_LOCAL_STORAGE_PREFIX }}
+        run: |
+          echo "VITE_AWS_REGION=${VITE_AWS_REGION}" >> .env
+          echo "VITE_AWS_ACCESS_KEY_ID=${VITE_AWS_ACCESS_KEY_ID}" >> .env
+          echo "VITE_AWS_SECRET_ACCESS_KEY=${VITE_AWS_SECRET_ACCESS_KEY}" >> .env
+          echo "VITE_DYNAMODB_TABLE_NAME=${VITE_DYNAMODB_TABLE_NAME}" >> .env
+          echo "VITE_USE_DYNAMODB=${VITE_USE_DYNAMODB}" >> .env
+          echo "VITE_DEBUG_MODE=${VITE_DEBUG_MODE}" >> .env
+          echo "VITE_LOCAL_STORAGE_PREFIX=${VITE_LOCAL_STORAGE_PREFIX}" >> .env
+
+
       - name: Build/release Electron app
         uses: samuelmeuli/action-electron-builder@v1
         with:

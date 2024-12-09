@@ -1,0 +1,27 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "PLMDynamoDBAccess",
+      "Effect": "Allow",
+      "Action": [
+        "dynamodb:PutItem",
+        "dynamodb:GetItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:Scan",
+        "dynamodb:Query",
+        "dynamodb:BatchGetItem",
+        "dynamodb:BatchWriteItem"
+      ],
+      "Resource": [
+        "arn:aws:dynamodb:eu-west-2:677276079975:table/plm_parts",
+        "arn:aws:dynamodb:eu-west-2:677276079975:table/plm_parts/index/*",
+        "arn:aws:dynamodb:eu-west-2:677276079975:table/plm_changelog",
+        "arn:aws:dynamodb:eu-west-2:677276079975:table/plm_changelog/index/*",
+        "arn:aws:dynamodb:eu-west-2:677276079975:table/plm_manufacturers",
+        "arn:aws:dynamodb:eu-west-2:677276079975:table/plm_manufacturers/index/*"
+      ]
+    }
+  ]
+}

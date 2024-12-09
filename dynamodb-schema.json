@@ -1,0 +1,82 @@
+{
+  "TableName": "plm_parts",
+  "AttributeDefinitions": [
+    {
+      "AttributeName": "partNumber",
+      "AttributeType": "S"
+    },
+    {
+      "AttributeName": "category",
+      "AttributeType": "S"
+    },
+    {
+      "AttributeName": "manufacturerId",
+      "AttributeType": "S"
+    },
+    {
+      "AttributeName": "status",
+      "AttributeType": "S"
+    },
+    {
+      "AttributeName": "felltenPartNumber",
+      "AttributeType": "S"
+    }
+  ],
+  "KeySchema": [
+    {
+      "AttributeName": "partNumber",
+      "KeyType": "HASH"
+    }
+  ],
+  "GlobalSecondaryIndexes": [
+    {
+      "IndexName": "CategoryIndex",
+      "KeySchema": [
+        {
+          "AttributeName": "category",
+          "KeyType": "HASH"
+        }
+      ],
+      "Projection": {
+        "ProjectionType": "ALL"
+      }
+    },
+    {
+      "IndexName": "ManufacturerIndex",
+      "KeySchema": [
+        {
+          "AttributeName": "manufacturerId",
+          "KeyType": "HASH"
+        }
+      ],
+      "Projection": {
+        "ProjectionType": "ALL"
+      }
+    },
+    {
+      "IndexName": "StatusIndex",
+      "KeySchema": [
+        {
+          "AttributeName": "status",
+          "KeyType": "HASH"
+        }
+      ],
+      "Projection": {
+        "ProjectionType": "ALL"
+      }
+    },
+    {
+      "IndexName": "FelltenPartNumberIndex",
+      "KeySchema": [
+        {
+          "AttributeName": "felltenPartNumber",
+          "KeyType": "HASH"
+        }
+      ],
+      "Projection": {
+        "ProjectionType": "ALL"
+      }
+    }
+  ],
+  "BillingMode": "PAY_PER_REQUEST"
+}
